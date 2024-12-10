@@ -1,0 +1,4 @@
+﻿  Main.cpp
+C:\Users\benjy\OneDrive\Desktop\uni shit\year 3\Graphics and Computational Programming\raytracing\GCP_Raytracer_Framework\Main.cpp(66,14): warning C4858: discarding return value: This temporary 'std::thread' is not joined or detached, so 'std::terminate' will be called at the end of the statement.
+C:\Users\benjy\OneDrive\Desktop\uni shit\year 3\Graphics and Computational Programming\raytracing\GCP_Raytracer_Framework\Main.cpp(37,6): warning C4101: 'Ray': unreferenced local variable
+  GCP_Raytracer_Framework.vcxproj -> C:\Users\benjy\OneDrive\Desktop\uni shit\year 3\Graphics and Computational Programming\raytracing\Debug\GCP_Raytracer_Framework.exe

@@ -1,0 +1,5 @@
+﻿  Sphere.cpp
+C:\Users\benjy\OneDrive\Desktop\uni shit\year 3\Graphics and Computational Programming\raytracing\GCP_Raytracer_Framework\Sphere.cpp(24,12): error C2371: 'D': redefinition; different basic types
+  C:\Users\benjy\OneDrive\Desktop\uni shit\year 3\Graphics and Computational Programming\raytracing\GCP_Raytracer_Framework\Sphere.cpp(22,8):
+  see declaration of 'D'
+  
