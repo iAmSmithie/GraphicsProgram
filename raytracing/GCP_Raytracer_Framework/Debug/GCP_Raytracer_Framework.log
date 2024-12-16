@@ -1,4 +1,29 @@
-﻿  Main.cpp
-C:\Users\benjy\OneDrive\Desktop\uni shit\year 3\Graphics and Computational Programming\raytracing\GCP_Raytracer_Framework\Main.cpp(66,14): warning C4858: discarding return value: This temporary 'std::thread' is not joined or detached, so 'std::terminate' will be called at the end of the statement.
-C:\Users\benjy\OneDrive\Desktop\uni shit\year 3\Graphics and Computational Programming\raytracing\GCP_Raytracer_Framework\Main.cpp(37,6): warning C4101: 'Ray': unreferenced local variable
-  GCP_Raytracer_Framework.vcxproj -> C:\Users\benjy\OneDrive\Desktop\uni shit\year 3\Graphics and Computational Programming\raytracing\Debug\GCP_Raytracer_Framework.exe
+﻿  Camera.cpp
+  GCP_GFX_Framework.cpp
+  Main.cpp
+C:\Users\benjy\OneDrive\Desktop\uni shit\GraphicsProgram\raytracing\GCP_Raytracer_Framework\Main.cpp(79,25): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\benjy\OneDrive\Desktop\uni shit\GraphicsProgram\raytracing\GCP_Raytracer_Framework\Main.cpp(82,17): warning C4244: 'initializing': conversion from 'T' to 'float', possible loss of data
+C:\Users\benjy\OneDrive\Desktop\uni shit\GraphicsProgram\raytracing\GCP_Raytracer_Framework\Main.cpp(82,17): warning C4244:         with
+C:\Users\benjy\OneDrive\Desktop\uni shit\GraphicsProgram\raytracing\GCP_Raytracer_Framework\Main.cpp(82,17): warning C4244:         [
+C:\Users\benjy\OneDrive\Desktop\uni shit\GraphicsProgram\raytracing\GCP_Raytracer_Framework\Main.cpp(82,17): warning C4244:             T=int
+C:\Users\benjy\OneDrive\Desktop\uni shit\GraphicsProgram\raytracing\GCP_Raytracer_Framework\Main.cpp(82,17): warning C4244:         ]
+C:\Users\benjy\OneDrive\Desktop\uni shit\GraphicsProgram\raytracing\GCP_Raytracer_Framework\Main.cpp(83,17): warning C4244: 'initializing': conversion from 'T' to 'float', possible loss of data
+C:\Users\benjy\OneDrive\Desktop\uni shit\GraphicsProgram\raytracing\GCP_Raytracer_Framework\Main.cpp(83,17): warning C4244:         with
+C:\Users\benjy\OneDrive\Desktop\uni shit\GraphicsProgram\raytracing\GCP_Raytracer_Framework\Main.cpp(83,17): warning C4244:         [
+C:\Users\benjy\OneDrive\Desktop\uni shit\GraphicsProgram\raytracing\GCP_Raytracer_Framework\Main.cpp(83,17): warning C4244:             T=int
+C:\Users\benjy\OneDrive\Desktop\uni shit\GraphicsProgram\raytracing\GCP_Raytracer_Framework\Main.cpp(83,17): warning C4244:         ]
+C:\Users\benjy\OneDrive\Desktop\uni shit\GraphicsProgram\raytracing\GCP_Raytracer_Framework\Main.cpp(84,17): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\benjy\OneDrive\Desktop\uni shit\GraphicsProgram\raytracing\GCP_Raytracer_Framework\Main.cpp(85,22): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\benjy\OneDrive\Desktop\uni shit\GraphicsProgram\raytracing\GCP_Raytracer_Framework\Main.cpp(124,23): warning C4244: 'initializing': conversion from '_Rep' to 'int', possible loss of data
+C:\Users\benjy\OneDrive\Desktop\uni shit\GraphicsProgram\raytracing\GCP_Raytracer_Framework\Main.cpp(124,23): warning C4244:         with
+C:\Users\benjy\OneDrive\Desktop\uni shit\GraphicsProgram\raytracing\GCP_Raytracer_Framework\Main.cpp(124,23): warning C4244:         [
+C:\Users\benjy\OneDrive\Desktop\uni shit\GraphicsProgram\raytracing\GCP_Raytracer_Framework\Main.cpp(124,23): warning C4244:             _Rep=__int64
+C:\Users\benjy\OneDrive\Desktop\uni shit\GraphicsProgram\raytracing\GCP_Raytracer_Framework\Main.cpp(124,23): warning C4244:         ]
+C:\Users\benjy\OneDrive\Desktop\uni shit\GraphicsProgram\raytracing\GCP_Raytracer_Framework\Main.cpp(75,9): warning C4101: 'Ray': unreferenced local variable
+  RayTracer.cpp
+C:\Users\benjy\OneDrive\Desktop\uni shit\GraphicsProgram\raytracing\GCP_Raytracer_Framework\RayTracer.cpp(12,20): warning C4018: '<': signed/unsigned mismatch
+  Sphere.cpp
+C:\Users\benjy\OneDrive\Desktop\uni shit\GraphicsProgram\raytracing\GCP_Raytracer_Framework\Sphere.cpp(41,17): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  Generating Code...
+  glew.c
+  GCP_Raytracer_Framework.vcxproj -> C:\Users\benjy\OneDrive\Desktop\uni shit\GraphicsProgram\raytracing\Debug\GCP_Raytracer_Framework.exe

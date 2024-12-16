@@ -33,7 +33,7 @@ bool sphere::RayIntersect(ray _Intersect, glm::vec3& _rayPosi)
 
 glm::vec3 sphere::Shader(glm::vec3 _intersectPoint)
 {
-	glm::vec3 lightPosi = glm::vec3(500.0f, 100.0f, 100.0f);
+	glm::vec3 lightPosi = glm::vec3(500.0f, 500.0f, 25.0f);
 	glm::vec3 Colour = glm::vec3(1.0f, 0.0f, 0.0f);
 	glm::vec3 lightDir = glm::normalize(lightPosi - _intersectPoint);
 	glm::vec3 normal = GetNormal(_intersectPoint);

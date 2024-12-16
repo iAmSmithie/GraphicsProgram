@@ -37,6 +37,7 @@ public:
 	// Will return when user closes the window
 	// SDL is uninitialised, you are expected to exit the program
 	void ShowAndHold();
+	void Test(int testCount);
 
 protected:
 

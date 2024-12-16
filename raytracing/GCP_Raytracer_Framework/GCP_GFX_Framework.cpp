@@ -368,7 +368,7 @@ bool GCP_Framework::Init( glm::ivec2 screenSize )
 	int winPosY = 100;
 	int winWidth = _screenSize.x;
 	int winHeight = _screenSize.y;
-	_SDLwindow = SDL_CreateWindow("My Window!!!",  // The first parameter is the window title
+	_SDLwindow = SDL_CreateWindow("Sphere Rendering",  // The first parameter is the window title
 		winPosX, winPosY,
 		winWidth, winHeight,
 		SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE | SDL_WINDOW_OPENGL);
@@ -433,6 +433,37 @@ void GCP_Framework::DrawPixel(glm::ivec2 pixelPosition, glm::vec3 pixelColour)
 
 	_mainBuffer->DrawPixel(pixelPosition, pixelColour);
 }
+
+void GCP_Framework::Test(int testCount)
+{
+	// Ensure the framework is properly initialized
+	assert(_mainBuffer != nullptr);
+
+	// Main test loop
+	for (int i = 0; i < testCount; ++i)
+	{
+		// Clear the framebuffer with the specified color
+		glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+		glClear(GL_COLOR_BUFFER_BIT);
+
+		// Update and bind the main buffer's OpenGL texture
+		_mainBuffer->UpdateGL();
+		glActiveTexture(GL_TEXTURE0);
+		_mainBuffer->BindGLTex();
+
+		// Draw the triangle
+		DrawVAOTris(_triangleVAO, 6, _shaderProgram);
+
+		// Swap buffers to show the content on the screen
+		SDL_GL_SwapWindow(_SDLwindow);
+	}
+
+	// Cleanup after testing
+	SDL_GL_DeleteContext(_SDLglcontext);
+	SDL_DestroyWindow(_SDLwindow);
+	SDL_Quit();
+}
+
 
 void GCP_Framework::ShowAndHold()
 {
