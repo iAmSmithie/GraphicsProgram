@@ -43,15 +43,41 @@ void writeResultsToCSV(const std::string& filename, const std::vector<TestResult
     std::cout << "Results successfully written to " << filename << std::endl;
 }
 
-void Rendering(rayTracer& rayTracer, camera& camera, GCP_Framework& _MyFramework, int startY, int endY, glm::ivec2 winSize)
+glm::vec3 jitterSSAA(int samples, int x, int y, camera& camera, rayTracer& rayTracer)
 {
+    glm::vec3 accumulatedColour(0.0f);
+    for (int i = 0; i < samples; i++)
+    {
+        float jitterX = (rand() / (float)RAND_MAX) - 0.5f;
+        float jitterY = (rand() / (float)RAND_MAX) - 0.5f;
+        glm::vec2 jitteredPos(x + jitterX, y + jitterY);
+        ray jitteredRay = camera.GetRay(jitteredPos);
+        glm::vec3 colour = rayTracer.TraceRay(jitteredRay);
+        accumulatedColour += colour;
+    }
+    return accumulatedColour;
+}
+
+void Rendering(rayTracer& rayTracer, camera& camera, GCP_Framework& _MyFramework, int startY, int endY, glm::ivec2 winSize, bool AAtype)
+{
+    const int samples = 6;
+    srand(static_cast<unsigned int>(time(0)));
+
     for (int y = startY; y < endY; y++)
     {
         for (int x = 0; x < winSize.x; x++)
         {
-            ray ray = camera.GetRay(glm::ivec2(x, y));
-            glm::vec3 colour = rayTracer.TraceRay(ray);
-            _MyFramework.DrawPixel(glm::ivec2(x, y), colour);
+            if (AAtype = 1)
+            {
+                jitterSSAA(samples, x, y, camera, rayTracer);
+                glm::vec3 accumulatedColour = jitterSSAA(samples, x, y, camera, rayTracer);
+                glm::vec3 finalColour = accumulatedColour / static_cast<float>(samples);
+                _MyFramework.DrawPixel(glm::ivec2(x, y), finalColour);
+            }
+            else
+            {
+
+            }
         }
     }
 }
@@ -59,7 +85,7 @@ void Rendering(rayTracer& rayTracer, camera& camera, GCP_Framework& _MyFramework
 int main(int argc, char* argv[])
 {
     //Set window size
-    glm::ivec2 winSize(640, 480);
+    glm::ivec2 winSize(900, 900);
 
     //This will handle rendering to screen
     GCP_Framework _myFramework;
@@ -76,13 +102,13 @@ int main(int argc, char* argv[])
 
     //Add spheres to the screen based on sphereCount
     int sphereCount = 10;
-    std::srand(std::time(nullptr));
+    //std::srand(std::time(nullptr));
     for (int i = 0; i < sphereCount; i++)
     {
         float x = rand() % winSize.x;
         float y = rand() % winSize.y;
         float z = -rand() % 1000;
-        float radius = rand() % 50;
+        float radius = rand() % 100;
         sphere* sphere = new class sphere(glm::vec3(x, y, z), radius);
         rayTracer.AddSphere(sphere);
     }
@@ -90,8 +116,9 @@ int main(int argc, char* argv[])
     std::vector<TestResult> testResults;
 
     //Multithreading test loop (10 iterations)
-    int threadCount = 4;
-    const int iterations = 20; //number of tests ran
+    bool AAtype = 1; //AA type 1 = Jittered SSAa, 0 =
+    int threadCount = 20;
+    const int iterations = 1; //number of tests ran
     int chunkHeight = winSize.y / threadCount;
     std::vector<std::thread> threads;
 
@@ -104,7 +131,7 @@ int main(int argc, char* argv[])
         {
             int startY = i * chunkHeight;
             int endY = (i == threadCount - 1) ? winSize.y : startY + chunkHeight;
-            threads.emplace_back(Rendering, std::ref(rayTracer), std::ref(camera), std::ref(_myFramework), startY, endY, winSize);
+            threads.emplace_back(Rendering, std::ref(rayTracer), std::ref(camera), std::ref(_myFramework), startY, endY, winSize, AAtype);
             std::cout << "Thread " << i << " rendering rows " << startY << " to " << endY << std::endl;
         }
 
@@ -131,6 +158,7 @@ int main(int argc, char* argv[])
     writeResultsToCSV("test_results.csv", testResults);
 
     //Run the program in either hold or test mode
-    _myFramework.Test(iterations);
+    //_myFramework.Test(iterations);
+    _myFramework.ShowAndHold();
     return 0;
 }
