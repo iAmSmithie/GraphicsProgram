@@ -101,8 +101,8 @@ int main(int argc, char* argv[])
     ray Ray;
 
     //Add spheres to the screen based on sphereCount
-    int sphereCount = 10;
-    //std::srand(std::time(nullptr));
+    int sphereCount = 1000;
+    std::srand(std::time(nullptr));
     for (int i = 0; i < sphereCount; i++)
     {
         float x = rand() % winSize.x;
@@ -117,7 +117,7 @@ int main(int argc, char* argv[])
 
     //Multithreading test loop (10 iterations)
     bool AAtype = 1; //AA type 1 = Jittered SSAa, 0 =
-    int threadCount = 20;
+    int threadCount = 16;
     const int iterations = 1; //number of tests ran
     int chunkHeight = winSize.y / threadCount;
     std::vector<std::thread> threads;

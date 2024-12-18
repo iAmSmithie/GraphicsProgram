@@ -1,5 +1,21 @@
-﻿  Sphere.cpp
-C:\Users\benjy\OneDrive\Desktop\uni shit\year 3\Graphics and Computational Programming\raytracing\GCP_Raytracer_Framework\Sphere.cpp(24,12): error C2371: 'D': redefinition; different basic types
-  C:\Users\benjy\OneDrive\Desktop\uni shit\year 3\Graphics and Computational Programming\raytracing\GCP_Raytracer_Framework\Sphere.cpp(22,8):
-  see declaration of 'D'
-  
+﻿  Main.cpp
+D:\GraphicsProgram\raytracing\GCP_Raytracer_Framework\Main.cpp(105,25): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+D:\GraphicsProgram\raytracing\GCP_Raytracer_Framework\Main.cpp(108,17): warning C4244: 'initializing': conversion from 'T' to 'float', possible loss of data
+D:\GraphicsProgram\raytracing\GCP_Raytracer_Framework\Main.cpp(108,17): warning C4244:         with
+D:\GraphicsProgram\raytracing\GCP_Raytracer_Framework\Main.cpp(108,17): warning C4244:         [
+D:\GraphicsProgram\raytracing\GCP_Raytracer_Framework\Main.cpp(108,17): warning C4244:             T=int
+D:\GraphicsProgram\raytracing\GCP_Raytracer_Framework\Main.cpp(108,17): warning C4244:         ]
+D:\GraphicsProgram\raytracing\GCP_Raytracer_Framework\Main.cpp(109,17): warning C4244: 'initializing': conversion from 'T' to 'float', possible loss of data
+D:\GraphicsProgram\raytracing\GCP_Raytracer_Framework\Main.cpp(109,17): warning C4244:         with
+D:\GraphicsProgram\raytracing\GCP_Raytracer_Framework\Main.cpp(109,17): warning C4244:         [
+D:\GraphicsProgram\raytracing\GCP_Raytracer_Framework\Main.cpp(109,17): warning C4244:             T=int
+D:\GraphicsProgram\raytracing\GCP_Raytracer_Framework\Main.cpp(109,17): warning C4244:         ]
+D:\GraphicsProgram\raytracing\GCP_Raytracer_Framework\Main.cpp(110,17): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+D:\GraphicsProgram\raytracing\GCP_Raytracer_Framework\Main.cpp(111,22): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+D:\GraphicsProgram\raytracing\GCP_Raytracer_Framework\Main.cpp(151,23): warning C4244: 'initializing': conversion from '_Rep' to 'int', possible loss of data
+D:\GraphicsProgram\raytracing\GCP_Raytracer_Framework\Main.cpp(151,23): warning C4244:         with
+D:\GraphicsProgram\raytracing\GCP_Raytracer_Framework\Main.cpp(151,23): warning C4244:         [
+D:\GraphicsProgram\raytracing\GCP_Raytracer_Framework\Main.cpp(151,23): warning C4244:             _Rep=__int64
+D:\GraphicsProgram\raytracing\GCP_Raytracer_Framework\Main.cpp(151,23): warning C4244:         ]
+D:\GraphicsProgram\raytracing\GCP_Raytracer_Framework\Main.cpp(101,9): warning C4101: 'Ray': unreferenced local variable
+  GCP_Raytracer_Framework.vcxproj -> D:\GraphicsProgram\raytracing\x64\Debug\GCP_Raytracer_Framework.exe
