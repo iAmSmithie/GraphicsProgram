@@ -13,6 +13,7 @@ public:
 	glm::vec3 Shader(glm::vec3 _intersectPoint);
 	glm::vec3 GetNormal(glm::vec3 _QueryPoint);
 
+
 private:
 	glm::vec3 _position;
 	float _radius;

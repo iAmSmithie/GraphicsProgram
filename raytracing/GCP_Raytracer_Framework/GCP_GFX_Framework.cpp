@@ -457,11 +457,6 @@ void GCP_Framework::Test(int testCount)
 		// Swap buffers to show the content on the screen
 		SDL_GL_SwapWindow(_SDLwindow);
 	}
-
-	// Cleanup after testing
-	SDL_GL_DeleteContext(_SDLglcontext);
-	SDL_DestroyWindow(_SDLwindow);
-	SDL_Quit();
 }
 
 

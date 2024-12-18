@@ -60,7 +60,7 @@ glm::vec3 jitterSSAA(int samples, int x, int y, camera& camera, rayTracer& rayTr
 
 void Rendering(rayTracer& rayTracer, camera& camera, GCP_Framework& _MyFramework, int startY, int endY, glm::ivec2 winSize, bool AAtype)
 {
-    const int samples = 6;
+    const int samples = 12;
     srand(static_cast<unsigned int>(time(0)));
 
     for (int y = startY; y < endY; y++)
@@ -76,7 +76,9 @@ void Rendering(rayTracer& rayTracer, camera& camera, GCP_Framework& _MyFramework
             }
             else
             {
-
+                ray ray = camera.GetRay(glm::ivec2(x, y));
+                glm::vec3 colour = rayTracer.TraceRay(ray);
+                _MyFramework.DrawPixel(glm::ivec2(x, y), colour);
             }
         }
     }
@@ -101,29 +103,28 @@ int main(int argc, char* argv[])
     ray Ray;
 
     //Add spheres to the screen based on sphereCount
-    int sphereCount = 1000;
-    std::srand(std::time(nullptr));
-    for (int i = 0; i < sphereCount; i++)
+    int sphereCount = 1;
+    for (int s = 0; s < sphereCount; s++)
     {
-        float x = rand() % winSize.x;
-        float y = rand() % winSize.y;
-        float z = -rand() % 1000;
-        float radius = rand() % 100;
-        sphere* sphere = new class sphere(glm::vec3(x, y, z), radius);
-        rayTracer.AddSphere(sphere);
-    }
+        std::srand(std::time(nullptr));
+        for (int i = 0; i < sphereCount; i++)
+        {
+            float x = rand() % winSize.x;
+            float y = rand() % winSize.y;
+            float z = -rand() % 1000;
+            float radius = rand() % 100;
+            sphere* sphere = new class sphere(glm::vec3(x, y, z), radius);
+            rayTracer.AddSphere(sphere);
+        }
 
-    std::vector<TestResult> testResults;
+        std::vector<TestResult> testResults;
 
-    //Multithreading test loop (10 iterations)
-    bool AAtype = 1; //AA type 1 = Jittered SSAa, 0 =
-    int threadCount = 16;
-    const int iterations = 1; //number of tests ran
-    int chunkHeight = winSize.y / threadCount;
-    std::vector<std::thread> threads;
+        bool AAtype = 0; //AA type 1 = Jittered SSAA, 0 = no SSAA
+        int threadCount = 16;
+        //const int iterations = 1000; //number of tests ran
+        int chunkHeight = winSize.y / threadCount;
+        std::vector<std::thread> threads;
 
-    for (int iteration = 0; iteration < iterations; ++iteration) 
-    {
         //Get time before rendering
         std::chrono::steady_clock::time_point time1 = std::chrono::high_resolution_clock::now();
 
@@ -140,6 +141,14 @@ int main(int argc, char* argv[])
             threads[i].join();
         }
 
+        for (std::thread& t : threads) 
+        {
+            if (t.joinable())
+            {
+                t.join();
+            }
+        }
+
         //Get time and turn into milliseconds
         std::chrono::steady_clock::time_point time2 = std::chrono::high_resolution_clock::now();
         std::chrono::milliseconds milliseconds = std::chrono::duration_cast<std::chrono::milliseconds>(time2 - time1);
@@ -152,13 +161,19 @@ int main(int argc, char* argv[])
         testResults.push_back({ timeTaken, sphereCount, threadCount });
 
         threads.clear();
+        rayTracer.ClearSpheres();
+        //Write all test results to CSV
+		writeResultsToCSV("testResults.csv", testResults, true);
+        sphereCount++;
+        //Run the program in either hold or test mode
+        _myFramework.Test(sphereCount);
+        //_myFramework.ShowAndHold();
+        if (sphereCount > 500)
+        {
+            return 0;
+        }
+        std::cout << "Sphere count increased to: " << sphereCount << std::endl;
     }
 
-    //Write all test results to CSV
-    writeResultsToCSV("test_results.csv", testResults);
-
-    //Run the program in either hold or test mode
-    //_myFramework.Test(iterations);
-    _myFramework.ShowAndHold();
     return 0;
 }
